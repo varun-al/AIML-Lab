@@ -1,6 +1,6 @@
 import pandas as pd
 
-df=pd.read_csv('enjoysport.csv')
+df=pd.read_csv('Dataset/PlayTennis.csv')
 data = list(df.values)
 
 specific = data[0][:-1]
