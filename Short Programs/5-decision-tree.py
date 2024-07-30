@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 from sklearn import metrics
 
-dataset = pd.read_csv('PlayTennis.csv')
+dataset = pd.read_csv('Dataset/PlayTennis.csv')
 
 X = dataset[['Outlook', 'Temperature', 'Humidity', 'Wind']]
 Y = dataset['PlayTennis']
