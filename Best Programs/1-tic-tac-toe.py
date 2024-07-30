@@ -10,14 +10,14 @@ def print_board():
     print(row3)
     print()
     
-    
+
 def player_move(icon):
     if icon=="X":
         number=1
     elif icon=="0":
         number=2
-    print("Your tunr player {}".format(number))
-    choice=int(input("Ente the value(1-9) : ").strip())
+    print("Your turn player {}".format(number))
+    choice=int(input("Enter the value(1-9) : ").strip())
     if board[choice-1]==" ":
         board[choice-1]==icon
     else:

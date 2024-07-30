@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import metrics
-msg = pd.read_csv('naivetext.csv', names=['message', 'label'])
+msg = pd.read_csv('Dataset/naivetext.csv', names=['message', 'label'])
 msg['labelnum'] = msg.label.map({'pos': 1, 'neg': 0})
 X = msg.message
 y = msg.labelnum
