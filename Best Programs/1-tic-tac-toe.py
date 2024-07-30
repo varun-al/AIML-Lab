@@ -1,40 +1,64 @@
-#tictactoe
-
-board = [" " for _ in range(9)]
+board=[" " for x in range(9)]
 
 def print_board():
-    for i in range(0, 9, 3):
-        print("|{}|{}|{}|".format(board[i], board[i+1], board[i+2]))
+    row1="|{}|{}|{}|".format(board[0],board[1],board[2])
+    row2="|{}|{}|{}|".format(board[3],board[4],board[5])
+    row3="|{}|{}|{}|".format(board[6],board[7],board[8])
     print()
-
+    print(row1)
+    print(row2)
+    print(row3)
+    print()
+    
+    
 def player_move(icon):
-    print(f"Your turn, player {'1' if icon == 'X' else '2'}")
-    while True:
-        choice = int(input("Enter the value (1-9): ").strip()) - 1
-        if board[choice] == " ":
-            board[choice] = icon
-            break
-        else:
-            print("Space is already taken")
-
+    if icon=="X":
+        number=1
+    elif icon=="0":
+        number=2
+    print("Your tunr player {}".format(number))
+    choice=int(input("Ente the value(1-9) : ").strip())
+    if board[choice-1]==" ":
+        board[choice-1]==icon
+    else:
+        print()
+        print("Space is already taken")
+        
+        
 def victory(icon):
-    win_combinations = [(0, 1, 2), (3, 4, 5), (6, 7, 8),
-                        (0, 3, 6), (1, 4, 7), (2, 5, 8),
-                        (0, 4, 8), (2, 4, 6)]
-    return any(all(board[i] == icon for i in combo) for combo in win_combinations)
-
+    if(board[0]==icon and board[1]==icon and board[2]==icon) or \
+    (board[3]==icon and board[4]==icon and board[5]==icon) or \
+    (board[6]==icon and board[7]==icon and board[8]==icon) or \
+    (board[0]==icon and board[3]==icon and board[6]==icon) or \
+    (board[1]==icon and board[4]==icon and board[7]==icon) or \
+    (board[2]==icon and board[5]==icon and board[8]==icon) or \
+    (board[0]==icon and board[4]==icon and board[8]==icon) or \
+    (board[2]==icon and board[4]==icon and board[6]==icon):
+        return True
+    else:
+        return False
+    
+    
 def draw():
-    return " " not in board
-
+    if " " not in board:
+        return True
+    else:
+        return False
 while True:
-    for icon in "XO":
+    print_board()
+    player_move("X")
+    print_board()
+    if victory("X"):
+        print("X wins")
+        break
+    elif draw():
+        print("Draw")
+        break
+    player_move("0")
+    if victory("0"):
         print_board()
-        player_move(icon)
-        if victory(icon):
-            print_board()
-            print(f"{icon} wins!")
-            exit()
-        if draw():
-            print_board()
-            print("It's a draw!")
-            exit()
+        print("0 Wins")
+        break
+    elif draw():
+        print("Draw")
+        break
